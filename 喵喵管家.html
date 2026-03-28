@@ -1,0 +1,1017 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 20.0px 'Helvetica Neue'; min-height: 25.0px}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    span.s1 {font: 13.0px 'Zapf Dingbats'}
+  </style>
+</head>
+<body>
+<p class="p1"><b></b><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!DOCTYPE html&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;html lang="zh-TW"&gt;</p>
+<p class="p3">&lt;head&gt;</p>
+<p class="p3">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p3">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p3">&lt;title&gt;🐾 喵喵管家&lt;/title&gt;</p>
+<p class="p3">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p3">&lt;link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p3">&lt;style&gt;</p>
+<p class="p3">:root {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--cream:#fdf6ee;--cream2:#faf0e4;--cream3:#f5e8d6;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--border:#e2cdb4;--border2:#d4bc9e;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--text:#4a3728;--text2:#7a5c48;--text3:#a88070;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--accent:#e07a5f;--accent2:#c96448;--accent3:#f2b5a0;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--mint:#7cbfb0;--mint2:#5da898;--lavender:#b59fd4;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--yellow:#e8c55a;--yellow2:#d4a830;--sky:#84b8d4;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--pink:#e89ab4;--green:#8ec98a;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--r:16px;--r2:10px;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--shadow:0 2px 12px rgba(74,55,40,0.08);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>--shadow2:0 4px 20px rgba(74,55,40,0.12);</p>
+<p class="p3">}</p>
+<p class="p3">*{box-sizing:border-box;margin:0;padding:0;}</p>
+<p class="p3">body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* SYNC STATUS BAR */</p>
+<p class="p3">.sync-bar{background:#f0f8ff;border-bottom:2px solid #b0d8f8;padding:6px 20px;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;color:#3070b0;font-family:‘Nunito’,sans-serif;min-height:34px;}</p>
+<p class="p3">.sync-bar.ok{background:#f5fbf5;border-color:#b0d8b0;color:#4a8050;}</p>
+<p class="p3">.sync-bar.err{background:#fff8f8;border-color:#f5c0c0;color:#c05050;}</p>
+<p class="p3">.sync-bar.saving{background:#fffbf0;border-color:#f5e0a0;color:#a07820;}</p>
+<p class="p3">.sync-dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;}</p>
+<p class="p3">.sync-dot.pulse{animation:pulse 1.2s ease-in-out infinite;}</p>
+<p class="p3">@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}</p>
+<p class="p3">.sync-spacer{flex:1;}</p>
+<p class="p3">.setup-btn{background:white;border:2px solid #4285F4;color:#4285F4;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;font-family:‘Nunito’,sans-serif;transition:all 0.15s;}</p>
+<p class="p3">.setup-btn:hover{background:#4285F4;color:white;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* TOP */</p>
+<p class="p3">.top-bar{background:white;border-bottom:2px solid var(–border);padding:0 20px;display:flex;align-items:center;gap:14px;height:60px;position:sticky;top:34px;z-index:100;box-shadow:var(–shadow);}</p>
+<p class="p3">.logo{font-family:‘Nunito’,sans-serif;font-size:20px;font-weight:800;color:var(–accent);white-space:nowrap;display:flex;align-items:center;gap:6px;}</p>
+<p class="p3">.logo-paw{font-size:22px;animation:wiggle 3s ease-in-out infinite;}</p>
+<p class="p3">@keyframes wiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-5deg)}}</p>
+<p class="p3">.cat-switcher{display:flex;gap:8px;flex:1;overflow-x:auto;scrollbar-width:none;}</p>
+<p class="p3">.cat-switcher::-webkit-scrollbar{display:none;}</p>
+<p class="p3">.cat-chip{display:flex;align-items:center;gap:8px;padding:6px 16px 6px 10px;border-radius:30px;border:2px solid var(–border);background:white;color:var(–text2);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.cat-chip:hover{border-color:var(–accent3);background:var(–cream);}</p>
+<p class="p3">.cat-chip.active{background:linear-gradient(135deg,var(–accent),var(–accent2));border-color:var(–accent2);color:white;box-shadow:0 3px 10px rgba(224,122,95,0.35);}</p>
+<p class="p3">.cat-chip-av{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:15px;}</p>
+<p class="p3">.btn-add-cat{background:white;border:2px dashed var(–border2);color:var(–text3);padding:6px 14px;border-radius:30px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:‘Nunito’,sans-serif;white-space:nowrap;}</p>
+<p class="p3">.btn-add-cat:hover{border-color:var(–accent);color:var(–accent);background:#fff5f2;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* LAYOUT */</p>
+<p class="p3">.main{display:flex;flex:1;}</p>
+<p class="p3">.sidebar{width:210px;background:white;border-right:2px solid var(–border);padding:20px 12px;display:flex;flex-direction:column;gap:3px;position:sticky;top:94px;height:calc(100vh - 94px);overflow-y:auto;flex-shrink:0;}</p>
+<p class="p3">.nav-section{font-size:10px;font-weight:700;color:var(–text3);padding:12px 10px 5px;letter-spacing:0.1em;text-transform:uppercase;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(–r2);cursor:pointer;font-size:13.5px;font-weight:600;color:var(–text2);transition:all 0.15s;border:2px solid transparent;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.nav-item:hover{background:var(–cream2);color:var(–text);}</p>
+<p class="p3">.nav-item.active{background:#fff0ed;color:var(–accent);border-color:var(–accent3);}</p>
+<p class="p3">.nav-icon{font-size:17px;width:22px;text-align:center;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* CONTENT */</p>
+<p class="p3">.content{flex:1;padding:28px;overflow-y:auto;max-width:980px;}</p>
+<p class="p3">.page{display:none;animation:fadeUp 0.25s ease;}</p>
+<p class="p3">.page.active{display:block;}</p>
+<p class="p3">@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}</p>
+<p class="p3">.page-title{font-family:‘Nunito’,sans-serif;font-size:22px;font-weight:800;color:var(–text);margin-bottom:22px;display:flex;align-items:center;gap:10px;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* CARDS */</p>
+<p class="p3">.card{background:white;border:2px solid var(–border);border-radius:var(–r);padding:20px;margin-bottom:16px;box-shadow:var(–shadow);}</p>
+<p class="p3">.card-title{font-family:‘Nunito’,sans-serif;font-size:12px;font-weight:800;color:var(–text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;}</p>
+<p class="p3">.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}</p>
+<p class="p3">.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* STATS */</p>
+<p class="p3">.stat{background:linear-gradient(135deg,var(–cream),var(–cream2));border:2px solid var(–border);border-radius:var(–r2);padding:16px;text-align:center;}</p>
+<p class="p3">.stat-val{font-family:‘Nunito’,sans-serif;font-size:28px;font-weight:800;color:var(–accent);margin-bottom:4px;line-height:1;}</p>
+<p class="p3">.stat-label{font-size:11px;color:var(–text3);font-weight:600;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* FORMS */</p>
+<p class="p3">.form-row{margin-bottom:14px;}</p>
+<p class="p3">.form-row label{display:block;font-size:12px;color:var(–text2);margin-bottom:6px;font-weight:700;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">input,select,textarea{width:100%;background:var(–cream);border:2px solid var(–border);border-radius:var(–r2);padding:9px 13px;color:var(–text);font-size:13.5px;font-family:‘Noto Sans TC’,sans-serif;transition:all 0.15s;outline:none;}</p>
+<p class="p3">input:focus,select:focus,textarea:focus{border-color:var(–accent3);background:white;box-shadow:0 0 0 3px rgba(224,122,95,0.12);}</p>
+<p class="p3">textarea{resize:vertical;min-height:80px;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* BUTTONS */</p>
+<p class="p3">.btn{padding:9px 20px;border-radius:30px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:‘Nunito’,sans-serif;transition:all 0.15s;display:inline-flex;align-items:center;gap:6px;}</p>
+<p class="p3">.btn-primary{background:linear-gradient(135deg,var(–accent),var(–accent2));color:white;box-shadow:0 3px 10px rgba(224,122,95,0.3);}</p>
+<p class="p3">.btn-primary:hover{transform:translateY(-1px);}</p>
+<p class="p3">.btn-secondary{background:white;color:var(–text2);border:2px solid var(–border);}</p>
+<p class="p3">.btn-secondary:hover{border-color:var(–accent3);color:var(–accent);}</p>
+<p class="p3">.btn-row{display:flex;gap:10px;flex-wrap:wrap;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* TAGS */</p>
+<p class="p3">.tag{display:inline-flex;align-items:center;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-right:4px;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.tag-mint{background:#e8f6f4;color:var(–mint2);border:1.5px solid #b8e8e0;}</p>
+<p class="p3">.tag-sky{background:#e8f2fa;color:var(–sky);border:1.5px solid #b8d8f0;}</p>
+<p class="p3">.tag-yellow{background:#fdf6dc;color:var(–yellow2);border:1.5px solid #f0dfa0;}</p>
+<p class="p3">.tag-red{background:#fdf0f0;color:#d06060;border:1.5px solid #f0c0c0;}</p>
+<p class="p3">.tag-lavender{background:#f4f0fa;color:#8060b0;border:1.5px solid #d4c0f0;}</p>
+<p class="p3">.tag-orange{background:#fff3ee;color:var(–accent);border:1.5px solid var(–accent3);}</p>
+<p class="p3">.tag-green{background:#f0f8f0;color:#5a9460;border:1.5px solid #b0d8b0;}</p>
+<p class="p3">.tag-pink{background:#faeef4;color:#c46080;border:1.5px solid #f0c0d4;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* ALERTS */</p>
+<p class="p3">.alert{padding:12px 16px;border-radius:var(–r2);font-size:13px;font-weight:600;margin-bottom:10px;display:flex;align-items:flex-start;gap:10px;border:2px solid;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.alert-warn{background:#fffbf0;border-color:#f5e0a0;color:#a07820;}</p>
+<p class="p3">.alert-danger{background:#fff8f8;border-color:#f5c0c0;color:#c05050;}</p>
+<p class="p3">.alert-info{background:#f0f8ff;border-color:#b0d8f8;color:#3070b0;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* MODAL */</p>
+<p class="p3">.modal-overlay{position:fixed;inset:0;background:rgba(74,55,40,0.35);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;}</p>
+<p class="p3">.modal-overlay.open{display:flex;}</p>
+<p class="p3">.modal{background:white;border:2px solid var(–border);border-radius:var(–r);padding:28px;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;position:relative;box-shadow:var(–shadow2);animation:modalIn 0.22s ease;}</p>
+<p class="p3">@keyframes modalIn{from{opacity:0;transform:scale(0.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}</p>
+<p class="p3">.modal-title{font-family:‘Nunito’,sans-serif;font-size:19px;font-weight:800;margin-bottom:22px;color:var(–text);}</p>
+<p class="p3">.modal-close{position:absolute;top:18px;right:18px;background:var(–cream2);border:2px solid var(–border);border-radius:50%;width:30px;height:30px;cursor:pointer;color:var(–text3);font-size:15px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}</p>
+<p class="p3">.modal-close:hover{background:#ffe0e0;border-color:#f5b0b0;color:#c05050;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* RECORDS */</p>
+<p class="p3">.record-list{display:flex;flex-direction:column;gap:10px;}</p>
+<p class="p3">.record-item{background:white;border:2px solid var(–border);border-radius:var(–r2);padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;box-shadow:var(–shadow);transition:all 0.15s;}</p>
+<p class="p3">.record-item:hover{border-color:var(–accent3);}</p>
+<p class="p3">.record-title{font-size:14px;font-weight:700;color:var(–text);margin-bottom:5px;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.record-meta{font-size:12px;color:var(–text3);line-height:1.6;}</p>
+<p class="p3">.record-date{font-size:12px;color:var(–text2);font-weight:700;white-space:nowrap;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* ICON BTN */</p>
+<p class="p3">.icon-btn{background:var(–cream);border:2px solid var(–border);border-radius:var(–r2);padding:5px 10px;cursor:pointer;font-size:12px;color:var(–text3);transition:all 0.15s;font-family:‘Nunito’,sans-serif;font-weight:700;}</p>
+<p class="p3">.icon-btn:hover{border-color:var(–accent3);color:var(–accent);}</p>
+<p class="p3">.icon-btn.del:hover{border-color:#f5b0b0;color:#c05050;background:#fff8f8;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* GCAL */</p>
+<p class="p3">.gcal-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;background:white;border:2px solid #4285F4;border-radius:30px;color:#4285F4;font-size:12px;font-weight:700;cursor:pointer;font-family:‘Nunito’,sans-serif;transition:all 0.15s;}</p>
+<p class="p3">.gcal-btn:hover{background:#4285F4;color:white;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* PROGRESS */</p>
+<p class="p3">.progress-bar{height:8px;background:var(–cream2);border-radius:4px;overflow:hidden;border:1px solid var(–border);}</p>
+<p class="p3">.progress-fill{height:100%;border-radius:4px;transition:width 0.4s ease;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* WEIGHT CHART */</p>
+<p class="p3">.weight-vis{display:flex;align-items:flex-end;gap:5px;padding-bottom:24px;margin-top:10px;}</p>
+<p class="p3">.weight-bar{flex:1;border-radius:6px 6px 0 0;min-height:10px;position:relative;cursor:pointer;background:linear-gradient(to top,var(–accent),var(–accent3));}</p>
+<p class="p3">.weight-bar::after{content:attr(data-val);position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;color:var(–text3);white-space:nowrap;font-weight:700;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* TIMELINE */</p>
+<p class="p3">.timeline{position:relative;padding-left:30px;}</p>
+<p class="p3">.timeline::before{content:’’;position:absolute;left:11px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(–accent3),var(–border));border-radius:2px;}</p>
+<p class="p3">.tl-item{position:relative;margin-bottom:22px;}</p>
+<p class="p3">.tl-dot{position:absolute;left:-24px;top:5px;width:14px;height:14px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 2px var(–border);}</p>
+<p class="p3">.tl-date{font-size:11px;color:var(–text3);margin-bottom:6px;font-weight:700;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.tl-content{background:white;border:2px solid var(–border);border-radius:var(–r2);padding:13px 15px;box-shadow:var(–shadow);}</p>
+<p class="p3">.tl-title{font-size:14px;font-weight:700;margin-bottom:6px;font-family:‘Nunito’,sans-serif;color:var(–text);}</p>
+<p class="p3">.tl-body{font-size:12px;color:var(–text2);line-height:1.7;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* NEXT BANNER */</p>
+<p class="p3">.next-banner{background:linear-gradient(135deg,#fff8f5,#fff5ee);border:2px solid var(–accent3);border-radius:var(–r);padding:18px 22px;margin-bottom:22px;display:flex;align-items:center;gap:16px;box-shadow:0 3px 14px rgba(224,122,95,0.12);}</p>
+<p class="p3">.next-banner-icon{font-size:32px;flex-shrink:0;}</p>
+<p class="p3">.next-banner-info{flex:1;}</p>
+<p class="p3">.next-banner-label{font-size:11px;color:var(–text3);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-family:‘Nunito’,sans-serif;margin-bottom:3px;}</p>
+<p class="p3">.next-banner-event{font-size:17px;font-weight:800;color:var(–accent2);font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.next-banner-date{font-size:12px;color:var(–text2);margin-top:3px;font-weight:600;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* SUB CARDS */</p>
+<p class="p3">.sub-card{background:white;border:2px solid var(–border);border-radius:var(–r);padding:18px;display:flex;gap:14px;align-items:flex-start;margin-bottom:12px;box-shadow:var(–shadow);}</p>
+<p class="p3">.sub-card:hover{border-color:var(–accent3);}</p>
+<p class="p3">.sub-icon{width:46px;height:46px;border-radius:var(–r2);background:linear-gradient(135deg,var(–cream),var(–cream3));border:2px solid var(–border);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}</p>
+<p class="p3">.sub-name{font-size:15px;font-weight:800;margin-bottom:5px;font-family:‘Nunito’,sans-serif;color:var(–text);}</p>
+<p class="p3">.sub-meta{font-size:12px;color:var(–text3);line-height:1.7;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* EXPO TABLE */</p>
+<p class="p3">.expo-table{width:100%;border-collapse:collapse;font-size:13px;}</p>
+<p class="p3">.expo-table th{text-align:left;padding:10px 14px;background:var(–cream2);color:var(–text3);font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid var(–border);font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.expo-table td{padding:12px 14px;border-bottom:1px solid var(–border);vertical-align:top;}</p>
+<p class="p3">.expo-table tr:last-child td{border-bottom:none;}</p>
+<p class="p3">.expo-table tr:hover td{background:var(–cream);}</p>
+<p class="p2"><br></p>
+<p class="p3">/* CAT PROFILE */</p>
+<p class="p3">.cat-profile-card{display:flex;align-items:center;gap:18px;padding:18px;background:linear-gradient(135deg,#fff8f5,#fff5ee);border:2px solid var(–accent3);border-radius:var(–r);margin-bottom:18px;box-shadow:0 3px 10px rgba(224,122,95,0.1);}</p>
+<p class="p3">.cat-big-emoji{font-size:52px;line-height:1;}</p>
+<p class="p3">.cat-name-big{font-family:‘Nunito’,sans-serif;font-size:22px;font-weight:800;color:var(–text);margin-bottom:4px;}</p>
+<p class="p3">.cat-info-sub{font-size:12.5px;color:var(–text2);font-weight:600;line-height:1.8;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* EMPTY */</p>
+<p class="p3">.empty{text-align:center;padding:40px;color:var(–text3);font-size:14px;font-weight:600;font-family:‘Nunito’,sans-serif;}</p>
+<p class="p3">.empty-icon{font-size:40px;margin-bottom:12px;}</p>
+<p class="p3">.sep{border:none;border-top:2px solid var(–border);margin:18px 0;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* SETUP MODAL special */</p>
+<p class="p3">.setup-step{background:var(–cream2);border:2px solid var(–border);border-radius:var(–r2);padding:14px 16px;margin-bottom:12px;}</p>
+<p class="p3">.setup-step-num{font-family:‘Nunito’,sans-serif;font-size:11px;font-weight:800;color:var(–accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}</p>
+<p class="p3">.setup-step p{font-size:13px;color:var(–text2);line-height:1.7;}</p>
+<p class="p3">.setup-step code{background:white;border:1px solid var(–border);border-radius:4px;padding:1px 6px;font-size:12px;color:var(–accent2);}</p>
+<p class="p2"><br></p>
+<p class="p3">/* MOBILE NAV */</p>
+<p class="p3">.mobile-nav{display:none;background:white;border-top:2px solid var(–border);padding:8px 12px;gap:4px;overflow-x:auto;scrollbar-width:none;}</p>
+<p class="p3">@media(max-width:700px){</p>
+<p class="p3">.sidebar{display:none;}</p>
+<p class="p3">.mobile-nav{display:flex;}</p>
+<p class="p3">.grid2,.grid3{grid-template-columns:1fr;}</p>
+<p class="p3">.content{padding:16px;}</p>
+<p class="p3">.top-bar{top:34px;}</p>
+<p class="p3">}</p>
+<p class="p3">.mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 10px;border-radius:var(–r2);cursor:pointer;font-size:10px;font-weight:700;color:var(–text3);white-space:nowrap;border:2px solid transparent;font-family:‘Nunito’,sans-serif;transition:all 0.15s;}</p>
+<p class="p3">.mob-nav-item.active{color:var(–accent);border-color:var(–accent3);background:#fff8f5;}</p>
+<p class="p3">.mob-nav-item span{font-size:18px;}</p>
+<p class="p2"><br></p>
+<p class="p3">/* LOADING OVERLAY */</p>
+<p class="p3">.loading-overlay{position:fixed;inset:0;background:rgba(253,246,238,0.85);backdrop-filter:blur(3px);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;display:none;}</p>
+<p class="p3">.loading-overlay.show{display:flex;}</p>
+<p class="p3">.loading-spinner{width:40px;height:40px;border:4px solid var(–border);border-top-color:var(–accent);border-radius:50%;animation:spin 0.8s linear infinite;}</p>
+<p class="p3">@keyframes spin{to{transform:rotate(360deg)}}</p>
+<p class="p3">.loading-text{font-family:‘Nunito’,sans-serif;font-size:15px;font-weight:700;color:var(–text2);}</p>
+<p class="p3">&lt;/style&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;/head&gt;</p>
+<p class="p3">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- SYNC STATUS BAR --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="sync-bar" id="syncBar"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="sync-dot pulse" id="syncDot"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;span id="syncMsg"&gt;尚未設定 Google Sheets 連線&lt;/span&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="sync-spacer"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;button class="setup-btn" onclick="openModal('setupModal')"&gt;⚙️ 設定連線&lt;/button&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- TOP BAR --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="top-bar"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="logo"&gt;&lt;span class="logo-paw"&gt;🐾&lt;/span&gt;喵喵管家&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="cat-switcher" id="catSwitcher"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;button class="btn-add-cat" onclick="openModal('addCatModal')"&gt;＋ 新增貓咪&lt;/button&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="main"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="sidebar"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-section"&gt;主頁&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item active" onclick="showPage('dashboard',this)"&gt;&lt;span class="nav-icon"&gt;🏠&lt;/span&gt;總覽&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-section"&gt;健康管理&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('health',this)"&gt;&lt;span class="nav-icon"&gt;🩺&lt;/span&gt;就醫紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('vaccine',this)"&gt;&lt;span class="nav-icon"&gt;💉&lt;/span&gt;疫苗&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('deworming',this)"&gt;&lt;span class="nav-icon"&gt;🪱&lt;/span&gt;除蟲&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('body',this)"&gt;&lt;span class="nav-icon"&gt;⚖️&lt;/span&gt;身體狀況&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-section"&gt;日常照顧&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('feeder',this)"&gt;&lt;span class="nav-icon"&gt;🍽️&lt;/span&gt;飼料機&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('litter',this)"&gt;&lt;span class="nav-icon"&gt;📦&lt;/span&gt;貓砂訂閱&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-section"&gt;活動資訊&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('expo',this)"&gt;&lt;span class="nav-icon"&gt;🎪&lt;/span&gt;寵物展&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="nav-item" onclick="showPage('calendar',this)"&gt;&lt;span class="nav-icon"&gt;📅&lt;/span&gt;重要日期&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="content"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;!-- DASHBOARD --&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="page active" id="page-dashboard"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div class="page-title"&gt;🏠 今日總覽&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div id="alertsArea"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div class="next-banner"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div class="next-banner-icon"&gt;📅&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div class="next-banner-info"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">          </span>&lt;div class="next-banner-label"&gt;下一個重要事項&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">          </span>&lt;div class="next-banner-event" id="nextEventName"&gt;尚無安排&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">          </span>&lt;div class="next-banner-date" id="nextEventDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;button class="gcal-btn" id="nextEventGcalBtn" style="display:none"&gt;📅 加入日曆&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div id="catProfileArea"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div class="grid3" id="dashStats" style="margin-bottom:16px"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div class="card-title"&gt;🔔 近期提醒&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div id="remindersArea"&gt;&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;🎉&lt;/div&gt;沒有緊急事項！&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;div class="card"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div class="card-title"&gt;📈 最近體重趨勢&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div id="dashWeightChart" class="weight-vis" style="height:90px"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;div style="height:20px"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">```</p>
+<p class="p3">&lt;!-- HEALTH --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-health"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;🩺 就醫紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addHealthModal')"&gt;＋ 新增就醫紀錄&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="record-list" id="healthList"&gt;&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- VACCINE --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-vaccine"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;💉 疫苗紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addVaccineModal')"&gt;＋ 新增疫苗&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div id="vaccineList"&gt;&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- DEWORMING --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-deworming"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;🪱 除蟲紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addDewormModal')"&gt;＋ 新增除蟲&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="record-list" id="dewormList"&gt;&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- BODY --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-body"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;⚖️ 身體狀況紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addBodyModal')"&gt;＋ 新增紀錄&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="card-title"&gt;📈 體重趨勢圖&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div id="fullWeightChart" class="weight-vis" style="height:110px"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div style="height:24px"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="timeline" id="bodyTimeline"&gt;&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- FEEDER --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-feeder"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;🍽️ 飼料機管理&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addFeederModal')"&gt;＋ 設定飼料機&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div id="feederList"&gt;&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- LITTER --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-litter"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;📦 貓砂訂閱管理&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addLitterModal')"&gt;＋ 新增訂閱&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div id="litterList"&gt;&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- EXPO --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-expo"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;🎪 寵物展資訊&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="btn-row" style="margin-bottom:18px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-primary" onclick="openModal('addExpoModal')"&gt;＋ 新增寵物展&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="card" style="overflow-x:auto"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;table class="expo-table"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;thead&gt;&lt;tr&gt;&lt;th&gt;展覽名稱&lt;/th&gt;&lt;th&gt;日期&lt;/th&gt;&lt;th&gt;地點&lt;/th&gt;&lt;th&gt;票價&lt;/th&gt;&lt;th&gt;狀態&lt;/th&gt;&lt;th&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;tbody id="expoBody"&gt;&lt;/tbody&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/table&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- CALENDAR --&gt;</p>
+<p class="p3">&lt;div class="page" id="page-calendar"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="page-title"&gt;📅 重要日期 &amp; Google 日曆&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="card"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="card-title"&gt;🗓 所有重要事項&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;p style="font-size:13px;color:var(--text3);margin-bottom:18px;font-weight:600"&gt;點擊「加入日曆」直接開啟 Google Calendar ✨&lt;/p&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div id="calendarEventsList"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;hr class="sep"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-secondary" onclick="exportICS()"&gt;📥 下載 .ics 備份&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p3">```</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- MOBILE NAV --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="mobile-nav"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item active" onclick="showPage('dashboard',this)"&gt;&lt;span&gt;🏠&lt;/span&gt;總覽&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('health',this)"&gt;&lt;span&gt;🩺&lt;/span&gt;就醫&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('vaccine',this)"&gt;&lt;span&gt;💉&lt;/span&gt;疫苗&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('deworming',this)"&gt;&lt;span&gt;🪱&lt;/span&gt;除蟲&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('body',this)"&gt;&lt;span&gt;⚖️&lt;/span&gt;體重&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('feeder',this)"&gt;&lt;span&gt;🍽️&lt;/span&gt;飼料機&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('litter',this)"&gt;&lt;span&gt;📦&lt;/span&gt;貓砂&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('expo',this)"&gt;&lt;span&gt;🎪&lt;/span&gt;寵物展&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="mob-nav-item" onclick="showPage('calendar',this)"&gt;&lt;span&gt;📅&lt;/span&gt;日曆&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- LOADING --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="loading-overlay" id="loadingOverlay"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="loading-spinner"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="loading-text" id="loadingText"&gt;同步中...&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ===== MODALS ===== --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- SETUP MODAL --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="setupModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('setupModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;⚙️ 設定 Google Sheets 連線&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">```</p>
+<p class="p3">&lt;div class="setup-step"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="setup-step-num"&gt;步驟 1 — 建立 Google 試算表&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;p&gt;前往 &lt;strong&gt;sheets.new&lt;/strong&gt; 建立一個新試算表，命名為「喵喵管家」&lt;/p&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p3">&lt;div class="setup-step"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="setup-step-num"&gt;步驟 2 — 開啟 Apps Script&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;p&gt;在試算表選單點「擴充功能」→「Apps Script」，貼上提供的 &lt;code&gt;google-apps-script.js&lt;/code&gt; 全部內容並儲存&lt;/p&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p3">&lt;div class="setup-step"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="setup-step-num"&gt;步驟 3 — 部署為網頁應用程式&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;p&gt;點右上角「部署」→「新增部署作業」→ 類型選「網頁應用程式」&lt;br&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>「執行身分」選 &lt;code&gt;我&lt;/code&gt;，「誰可以存取」選 &lt;code&gt;所有人&lt;/code&gt;&lt;br&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>點「部署」，複製產生的網址&lt;/p&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p3">&lt;div class="setup-step"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="setup-step-num"&gt;步驟 4 — 貼上網址&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;p&gt;把剛才複製的網址貼到下方，完成！&lt;/p&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="form-row" style="margin-top:16px"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;label&gt;Apps Script 部署網址&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;input type="url" id="scriptUrl" placeholder="https://script.google.com/macros/s/..."&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p3">&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;button class="btn btn-primary" onclick="saveScriptUrl()"&gt;✅ 連線並同步&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;button class="btn btn-secondary" onclick="closeModal('setupModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;hr class="sep"&gt;</p>
+<p class="p3">&lt;p style="font-size:12px;color:var(--text3);font-weight:600"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>💡 設定完成後，所有家人只要用同一個 HTML 檔（或儲存在 Google Drive 分享），填入同一個 Script 網址，資料就會自動同步。</p>
+<p class="p3">&lt;/p&gt;</p>
+<p class="p3">```</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD CAT --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addCatModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addCatModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;🐱 新增貓咪資料&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;貓咪名字 *&lt;/label&gt;&lt;input type="text" id="catName" placeholder="例：橘子、小黑"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;品種&lt;/label&gt;&lt;input type="text" id="catBreed" placeholder="例：混血貓、美短"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;生日&lt;/label&gt;&lt;input type="date" id="catBirthday"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;性別&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="catGender"&gt;&lt;option&gt;公&lt;/option&gt;&lt;option&gt;母&lt;/option&gt;&lt;option&gt;已結紮公&lt;/option&gt;&lt;option&gt;已結紮母&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;晶片號碼&lt;/label&gt;&lt;input type="text" id="catChip" placeholder="選填"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;代表 Emoji&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="catEmoji"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="🐱"&gt;🐱 普通貓&lt;/option&gt;&lt;option value="🟠"&gt;🟠 橘貓&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="⬛"&gt;⬛ 黑貓&lt;/option&gt;&lt;option value="⬜"&gt;⬜ 白貓&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="🩶"&gt;🩶 灰貓&lt;/option&gt;&lt;option value="🤎"&gt;🤎 棕貓&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="🌈"&gt;🌈 花貓&lt;/option&gt;&lt;option value="😸"&gt;😸 笑臉貓&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addCat()"&gt;✨ 新增&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addCatModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD HEALTH --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addHealthModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addHealthModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;🩺 新增就醫紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;就醫日期&lt;/label&gt;&lt;input type="date" id="hDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;主訴 / 原因&lt;/label&gt;&lt;input type="text" id="hReason" placeholder="例：定期健檢、嘔吐"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;診斷結果&lt;/label&gt;&lt;input type="text" id="hDiagnosis" placeholder="例：輕微腸胃炎"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;用藥（多筆用逗號分隔）&lt;/label&gt;&lt;input type="text" id="hMeds" placeholder="例：益生菌、腸胃藥"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;注意事項&lt;/label&gt;&lt;textarea id="hNotes" placeholder="例：清淡飲食三天..."&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;下次回診日期&lt;/label&gt;&lt;input type="date" id="hNextVisit"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;費用（NT$）&lt;/label&gt;&lt;input type="number" id="hCost" placeholder="0"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addHealthRecord()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addHealthModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD VACCINE --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addVaccineModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addVaccineModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;💉 新增疫苗紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;疫苗名稱&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="vName"&gt;&lt;option&gt;三合一疫苗&lt;/option&gt;&lt;option&gt;五合一疫苗&lt;/option&gt;&lt;option&gt;狂犬病疫苗&lt;/option&gt;&lt;option&gt;貓白血病疫苗&lt;/option&gt;&lt;option&gt;其他&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;自訂名稱（選「其他」時填）&lt;/label&gt;&lt;input type="text" id="vCustomName"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;接種日期&lt;/label&gt;&lt;input type="date" id="vDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;下次接種日期&lt;/label&gt;&lt;input type="date" id="vNextDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;批號（選填）&lt;/label&gt;&lt;input type="text" id="vBatch"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;備註&lt;/label&gt;&lt;textarea id="vNotes"&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addVaccine()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addVaccineModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD DEWORMING --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addDewormModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addDewormModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;🪱 新增除蟲紀錄&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;類型&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="dwType"&gt;&lt;option&gt;體外除蟲（跳蚤/蜱/耳蟎）&lt;/option&gt;&lt;option&gt;體內除蟲（腸道寄生蟲）&lt;/option&gt;&lt;option&gt;內外兼用&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;使用藥物&lt;/label&gt;&lt;input type="text" id="dwMed" placeholder="例：Frontline、Milbemax"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;施用日期&lt;/label&gt;&lt;input type="date" id="dwDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;下次施用日期&lt;/label&gt;&lt;input type="date" id="dwNextDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;備註&lt;/label&gt;&lt;textarea id="dwNotes"&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addDeworming()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addDewormModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD BODY --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addBodyModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addBodyModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;⚖️ 新增身體狀況&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;日期&lt;/label&gt;&lt;input type="date" id="bdDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;體重（kg）&lt;/label&gt;&lt;input type="number" id="bdWeight" step="0.01" placeholder="4.20"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;體況評分 BCS（1-9）&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="bdBCS"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="1"&gt;1 - 極度消瘦&lt;/option&gt;&lt;option value="2"&gt;2 - 消瘦&lt;/option&gt;&lt;option value="3"&gt;3 - 偏瘦&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="4"&gt;4 - 微瘦&lt;/option&gt;&lt;option value="5" selected&gt;5 - 理想&lt;/option&gt;&lt;option value="6"&gt;6 - 微胖&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>&lt;option value="7"&gt;7 - 過重&lt;/option&gt;&lt;option value="8"&gt;8 - 肥胖&lt;/option&gt;&lt;option value="9"&gt;9 - 極度肥胖&lt;/option&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;毛色 / 皮膚狀況&lt;/label&gt;&lt;input type="text" id="bdSkin" placeholder="例：光亮、無異狀"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;活動力&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="bdActivity"&gt;&lt;option&gt;正常&lt;/option&gt;&lt;option&gt;較高&lt;/option&gt;&lt;option&gt;偏低&lt;/option&gt;&lt;option&gt;低落&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;食慾&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="bdAppetite"&gt;&lt;option&gt;正常&lt;/option&gt;&lt;option&gt;旺盛&lt;/option&gt;&lt;option&gt;偏低&lt;/option&gt;&lt;option&gt;拒食&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;備註&lt;/label&gt;&lt;textarea id="bdNotes"&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addBodyRecord()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addBodyModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD FEEDER --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addFeederModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addFeederModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;🍽️ 飼料機設定&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;飼料機名稱&lt;/label&gt;&lt;input type="text" id="fdName" placeholder="例：主臥飼料機"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;飼料品牌&lt;/label&gt;&lt;input type="text" id="fdBrand" placeholder="例：Hills"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;飼料配方&lt;/label&gt;&lt;input type="text" id="fdType" placeholder="例：成貓室內配方"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;每日總份量（g）&lt;/label&gt;&lt;input type="number" id="fdDaily" placeholder="60"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;每日餵食次數&lt;/label&gt;&lt;input type="number" id="fdTimes" placeholder="3"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;餵食時間（逗號分隔）&lt;/label&gt;&lt;input type="text" id="fdSchedule" placeholder="08:00, 13:00, 19:00"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;目前飼料剩餘量（g）&lt;/label&gt;&lt;input type="number" id="fdRemain" placeholder="500"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;備註&lt;/label&gt;&lt;textarea id="fdNotes"&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addFeeder()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addFeederModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD LITTER --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addLitterModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addLitterModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;📦 新增貓砂訂閱&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;品牌&lt;/label&gt;&lt;input type="text" id="ltBrand" placeholder="例：豆腐貓砂 X"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;種類&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="ltType"&gt;&lt;option&gt;豆腐砂&lt;/option&gt;&lt;option&gt;礦砂&lt;/option&gt;&lt;option&gt;木屑砂&lt;/option&gt;&lt;option&gt;矽膠砂&lt;/option&gt;&lt;option&gt;紙砂&lt;/option&gt;&lt;option&gt;其他&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;訂閱平台&lt;/label&gt;&lt;input type="text" id="ltPlatform" placeholder="例：momo、官網"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;訂閱週期&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="ltCycle"&gt;&lt;option value="14"&gt;每兩週&lt;/option&gt;&lt;option value="30"&gt;每個月&lt;/option&gt;&lt;option value="60"&gt;每兩個月&lt;/option&gt;&lt;option value="90"&gt;每季&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;每次數量&lt;/label&gt;&lt;input type="text" id="ltQty" placeholder="例：6L x 2包"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;每次金額（NT$）&lt;/label&gt;&lt;input type="number" id="ltPrice" placeholder="500"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;下次配送日期&lt;/label&gt;&lt;input type="date" id="ltNextDate"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;備註&lt;/label&gt;&lt;textarea id="ltNotes"&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addLitter()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addLitterModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;!-- ADD EXPO --&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;div class="modal-overlay" id="addExpoModal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;div class="modal"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;button class="modal-close" onclick="closeModal('addExpoModal')"&gt;<span class="s1">✕</span>&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;🎪 新增寵物展&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;展覽名稱&lt;/label&gt;&lt;input type="text" id="exName"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;開始日期&lt;/label&gt;&lt;input type="date" id="exStart"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;結束日期&lt;/label&gt;&lt;input type="date" id="exEnd"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;地點&lt;/label&gt;&lt;input type="text" id="exLocation" placeholder="例：台北世貿一館"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;票價（NT$，免費填 0）&lt;/label&gt;&lt;input type="number" id="exTicket" placeholder="0"&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;官網連結&lt;/label&gt;&lt;input type="text" id="exUrl" placeholder="https://..."&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;狀態&lt;/label&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;select id="exStatus"&gt;&lt;option&gt;計畫前往&lt;/option&gt;&lt;option&gt;已報名&lt;/option&gt;&lt;option&gt;已參加&lt;/option&gt;&lt;option&gt;未參加&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="form-row"&gt;&lt;label&gt;備註&lt;/label&gt;&lt;textarea id="exNotes"&gt;&lt;/textarea&gt;&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;div class="btn-row"&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addExpo()"&gt;💾 儲存&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-secondary" onclick="closeModal('addExpoModal')"&gt;取消&lt;/button&gt;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p3">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;script&gt;</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// CONFIG</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">let SCRIPT_URL = localStorage.getItem('meow_script_url') || '';</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// LOCAL STATE (cache)</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">let S = { cats:[], expos:[], health:{}, vaccines:{}, deworming:{}, body:{}, feeders:{}, litter:{} };</p>
+<p class="p3">let _currentCat = localStorage.getItem('meow_current_cat') || null;</p>
+<p class="p3">let _page = 'dashboard';</p>
+<p class="p2"><br></p>
+<p class="p3">const cid<span class="Apple-converted-space">  </span>= () =&gt; _currentCat;</p>
+<p class="p3">const uid<span class="Apple-converted-space">  </span>= () =&gt; Date.now().toString(36) + Math.random().toString(36).slice(2,5);</p>
+<p class="p3">const ensArr = (obj,k) =&gt; { if(!obj[k]) obj[k]=[]; };</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// SYNC — Google Sheets via Apps Script</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">function setSyncStatus(state, msg) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const bar = document.getElementById('syncBar');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const dot = document.getElementById('syncDot');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const txt = document.getElementById('syncMsg');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>bar.className = 'sync-bar ' + state;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>dot.className = 'sync-dot' + (state==='saving'||state===''?' pulse':'');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>txt.textContent = msg;</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">function showLoading(msg='同步中...') {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.getElementById('loadingText').textContent = msg;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.getElementById('loadingOverlay').classList.add('show');</p>
+<p class="p3">}</p>
+<p class="p3">function hideLoading() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.getElementById('loadingOverlay').classList.remove('show');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// POST to Apps Script</p>
+<p class="p3">async function apiPost(body) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if (!SCRIPT_URL) throw new Error('尚未設定 Script URL');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const res = await fetch(SCRIPT_URL, {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>method: 'POST',</p>
+<p class="p3"><span class="Apple-converted-space">    </span>body: JSON.stringify(body),</p>
+<p class="p3"><span class="Apple-converted-space">  </span>});</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const json = await res.json();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if (!json.ok) throw new Error(json.error || 'API error');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>return json;</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// GET all data from Sheets</p>
+<p class="p3">async function fetchAll() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if (!SCRIPT_URL) return;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>showLoading('從 Google Sheets 讀取資料...');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>setSyncStatus('saving', '正在同步...');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>const res = await fetch(SCRIPT_URL + '?action=getAll');</p>
+<p class="p3"><span class="Apple-converted-space">    </span>const json = await res.json();</p>
+<p class="p3"><span class="Apple-converted-space">    </span>if (!json.ok) throw new Error(json.error);</p>
+<p class="p3"><span class="Apple-converted-space">    </span>const d = json.data;</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">    </span>// Rebuild state from flat arrays</p>
+<p class="p3"><span class="Apple-converted-space">    </span>S.cats<span class="Apple-converted-space">  </span>= d.cats<span class="Apple-converted-space">  </span>|| [];</p>
+<p class="p3"><span class="Apple-converted-space">    </span>S.expos = d.expos || [];</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">    </span>// Per-cat tables</p>
+<p class="p3"><span class="Apple-converted-space">    </span>const catTables = ['health','vaccines','deworming','body','feeders','litter'];</p>
+<p class="p3"><span class="Apple-converted-space">    </span>catTables.forEach(t =&gt; {</p>
+<p class="p3"><span class="Apple-converted-space">      </span>S[t] = {};</p>
+<p class="p3"><span class="Apple-converted-space">      </span>(d[t] || []).forEach(row =&gt; {</p>
+<p class="p3"><span class="Apple-converted-space">        </span>const catId = row.catId;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>if (!catId) return;</p>
+<p class="p3"><span class="Apple-converted-space">        </span>if (!S[t][catId]) S[t][catId] = [];</p>
+<p class="p3"><span class="Apple-converted-space">        </span>S[t][catId].push(row);</p>
+<p class="p3"><span class="Apple-converted-space">      </span>});</p>
+<p class="p3"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">    </span>// Restore current cat if valid</p>
+<p class="p3"><span class="Apple-converted-space">    </span>if (_currentCat &amp;&amp; !S.cats.find(c=&gt;c.id===_currentCat)) {</p>
+<p class="p3"><span class="Apple-converted-space">      </span>_currentCat = S.cats[0]?.id || null;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>}</p>
+<p class="p3"><span class="Apple-converted-space">    </span>if (!_currentCat &amp;&amp; S.cats.length) _currentCat = S.cats[0].id;</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">    </span>setSyncStatus('ok', '✅ 已同步 · ' + new Date().toLocaleTimeString('zh-TW'));</p>
+<p class="p3"><span class="Apple-converted-space">    </span>renderCatTabs();</p>
+<p class="p3"><span class="Apple-converted-space">    </span>renderPage(_page);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>setSyncStatus('err', '❌ 同步失敗：' + e.message);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>} finally {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>hideLoading();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>}</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// Save an entire sheet (used after delete/bulk update)</p>
+<p class="p3">async function saveSheet(sheetName, arr) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>setSyncStatus('saving', '儲存中...');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>await apiPost({ action:'save', sheet:sheetName, data:arr });</p>
+<p class="p3"><span class="Apple-converted-space">    </span>setSyncStatus('ok', '✅ 已儲存 · ' + new Date().toLocaleTimeString('zh-TW'));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>setSyncStatus('err', '❌ 儲存失敗：' + e.message);</p>
+<p class="p3"><span class="Apple-converted-space">    </span>throw e;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>}</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// Append one row</p>
+<p class="p3">async function appendRow(sheetName, obj) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>setSyncStatus('saving', '儲存中...');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>await apiPost({ action:'append', sheet:sheetName, data:obj });</p>
+<p class="p3"><span class="Apple-converted-space">    </span>setSyncStatus('ok', '✅ 已儲存 · ' + new Date().toLocaleTimeString('zh-TW'));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>setSyncStatus('err', '❌ 儲存失敗：' + e.message);</p>
+<p class="p3"><span class="Apple-converted-space">    </span>throw e;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>}</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// Setup URL</p>
+<p class="p3">function saveScriptUrl() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const url = document.getElementById('scriptUrl').value.trim();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if (!url.startsWith('https://script.google.com')) return alert('網址格式不對，請確認是 Apps Script 部署網址');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>SCRIPT_URL = url;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>localStorage.setItem('meow_script_url', url);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('setupModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>fetchAll();</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// NAV</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">function showPage(id, el) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.querySelectorAll('.page').forEach(p=&gt;p.classList.remove('active'));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.getElementById('page-'+id).classList.add('active');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.querySelectorAll('.nav-item,.mob-nav-item').forEach(n=&gt;n.classList.remove('active'));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(el) el.classList.add('active');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>_page = id;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>renderPage(id);</p>
+<p class="p3">}</p>
+<p class="p3">function renderPage(id) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const m = {dashboard:renderDashboard,health:renderHealth,vaccine:renderVaccines,deworming:renderDeworming,body:renderBody,feeder:renderFeeders,litter:renderLitter,expo:renderExpo,calendar:renderCalendar};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(m[id]) m[id]();</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">function openModal(id){document.getElementById(id).classList.add('open');}</p>
+<p class="p3">function closeModal(id){document.getElementById(id).classList.remove('open');}</p>
+<p class="p3">document.querySelectorAll('.modal-overlay').forEach(m=&gt;{m.addEventListener('click',e=&gt;{if(e.target===m)m.classList.remove('open');});});</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// CAT TABS</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">function renderCatTabs() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el = document.getElementById('catSwitcher'); el.innerHTML='';</p>
+<p class="p3"><span class="Apple-converted-space">  </span>S.cats.forEach(cat =&gt; {</p>
+<p class="p3"><span class="Apple-converted-space">    </span>const t = document.createElement('button');</p>
+<p class="p3"><span class="Apple-converted-space">    </span>t.className = 'cat-chip' + (_currentCat===cat.id?' active':'');</p>
+<p class="p3"><span class="Apple-converted-space">    </span>t.innerHTML = `&lt;div class="cat-chip-av"&gt;${cat.emoji||'🐱'}&lt;/div&gt;${cat.name}`;</p>
+<p class="p3"><span class="Apple-converted-space">    </span>t.onclick = () =&gt; { _currentCat=cat.id; localStorage.setItem('meow_current_cat',cat.id); renderCatTabs(); renderPage(_page); };</p>
+<p class="p3"><span class="Apple-converted-space">    </span>el.appendChild(t);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>});</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// ADD CAT</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">async function addCat() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const name = document.getElementById('catName').value.trim();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!name) return alert('請輸入貓咪名字！');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!SCRIPT_URL) return alert('請先設定 Google Sheets 連線！');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const cat = {id:uid(),name,breed:document.getElementById('catBreed').value,birthday:document.getElementById('catBirthday').value,gender:document.getElementById('catGender').value,chip:document.getElementById('catChip').value,emoji:document.getElementById('catEmoji').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>S.cats.push(cat);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>_currentCat = cat.id;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>localStorage.setItem('meow_current_cat', cat.id);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addCatModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>['catName','catBreed','catChip'].forEach(id=&gt;document.getElementById(id).value='');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>renderCatTabs(); renderDashboard();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await appendRow('cats', cat);</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// UTILS</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">function calcAge(bd){if(!bd)return'未知';const n=new Date(),d=new Date(bd);let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();if(m&lt;0){y--;m+=12;}return y&gt;0?`${y} 歲 ${m} 個月`:`${m} 個月`;}</p>
+<p class="p3">function daysUntil(date){const d=new Date(date),n=new Date();n.setHours(0,0,0,0);d.setHours(0,0,0,0);return Math.ceil((d-n)/86400000);}</p>
+<p class="p3">function openInGCal(ev){const d=ev.date.replace(/-/g,'');const nd=new Date(ev.date);nd.setDate(nd.getDate()+1);const de=nd.toISOString().slice(0,10).replace(/-/g,'');window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=${encodeURIComponent(ev.title)}&amp;dates=${d}/${de}&amp;details=${encodeURIComponent(ev.note||'')}`, '_blank');}</p>
+<p class="p3">function getAllEvents(catId){const evs=[];if(catId){(S.vaccines[catId]||[]).forEach(v=&gt;{if(v.nextDate)evs.push({title:`💉 ${v.name} 接種`,date:v.nextDate,note:'疫苗接種提醒'});});(S.deworming[catId]||[]).forEach(d=&gt;{if(d.nextDate)evs.push({title:`🪱 ${d.type}（${d.med}）`,date:d.nextDate,note:'除蟲提醒'});});(S.health[catId]||[]).forEach(h=&gt;{if(h.nextVisit)evs.push({title:`🩺 ${h.reason} 回診`,date:h.nextVisit,note:'回診提醒'});});(S.litter[catId]||[]).forEach(l=&gt;{if(l.nextDate)evs.push({title:`📦 貓砂配送（${l.brand}）`,date:l.nextDate,note:'訂閱貓砂配送'});});}S.expos.forEach(e=&gt;{if(e.start)evs.push({title:`🎪 ${e.name}`,date:e.start,note:`寵物展 @ ${e.location||''}`});});return evs.sort((a,b)=&gt;a.date.localeCompare(b.date));}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// DASHBOARD</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">function renderDashboard() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const cat = S.cats.find(c=&gt;c.id===cid());</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const pa = document.getElementById('catProfileArea');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!cat){pa.innerHTML=`&lt;div style="text-align:center;padding:30px;color:var(--text3)"&gt;&lt;div style="font-size:48px;margin-bottom:12px"&gt;🐾&lt;/div&gt;&lt;div style="font-size:15px;font-weight:700;margin-bottom:14px"&gt;${SCRIPT_URL?'還沒有貓咪資料！':'請先設定 Google Sheets 連線'}&lt;/div&gt;&lt;button class="btn btn-primary" onclick="openModal('${SCRIPT_URL?'addCatModal':'setupModal'}')"&gt;${SCRIPT_URL?'＋ 新增第一隻貓咪':'⚙️ 設定連線'}&lt;/button&gt;&lt;/div&gt;`;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>else{pa.innerHTML=`&lt;div class="cat-profile-card"&gt;&lt;div class="cat-big-emoji"&gt;${cat.emoji||'🐱'}&lt;/div&gt;&lt;div&gt;&lt;div class="cat-name-big"&gt;${cat.name}&lt;/div&gt;&lt;div class="cat-info-sub"&gt;${cat.breed||'未知品種'} · ${cat.gender||''}${cat.birthday?'&lt;br&gt;🎂 '+calcAge(cat.birthday):''}${cat.chip?'&lt;br&gt;🔖 晶片：'+cat.chip:''}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`;}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>const hLen=(cid()&amp;&amp;S.health[cid()]||[]).length;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const vLen=(cid()&amp;&amp;S.vaccines[cid()]||[]).length;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const bRecs=cid()&amp;&amp;S.body[cid()]?S.body[cid()].slice().sort((a,b)=&gt;b.date.localeCompare(a.date)):[];</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const lw=bRecs.length?bRecs[0].weight+'kg':'—';</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.getElementById('dashStats').innerHTML=`&lt;div class="stat"&gt;&lt;div class="stat-val"&gt;${hLen}&lt;/div&gt;&lt;div class="stat-label"&gt;就醫紀錄&lt;/div&gt;&lt;/div&gt;&lt;div class="stat"&gt;&lt;div class="stat-val"&gt;${vLen}&lt;/div&gt;&lt;div class="stat-label"&gt;疫苗接種&lt;/div&gt;&lt;/div&gt;&lt;div class="stat"&gt;&lt;div class="stat-val" style="font-size:22px"&gt;${lw}&lt;/div&gt;&lt;div class="stat-label"&gt;最新體重&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>const bSorted=bRecs.slice().reverse().slice(-8);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const wArea=document.getElementById('dashWeightChart');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!bSorted.length){wArea.innerHTML='&lt;div style="color:var(--text3);font-size:13px;font-weight:600;padding:20px 0"&gt;尚無體重紀錄&lt;/div&gt;';}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>else{const max=Math.max(...bSorted.map(r=&gt;parseFloat(r.weight)||0)),min=Math.min(...bSorted.map(r=&gt;parseFloat(r.weight)||0)),range=max-min||0.5;wArea.innerHTML=bSorted.map(r=&gt;{const h=Math.max(14,((parseFloat(r.weight)-min)/range*65)+14);return`&lt;div class="weight-bar" style="height:${h}px" data-val="${r.weight}kg"&gt;&lt;/div&gt;`;}).join('');}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>const today=new Date();today.setHours(0,0,0,0);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const in7=new Date(today.getTime()+7*864e5),in30=new Date(today.getTime()+30*864e5);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const alerts=[];</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(cid()){</p>
+<p class="p3"><span class="Apple-converted-space">    </span>(S.vaccines[cid()]||[]).forEach(v=&gt;{if(v.nextDate){const d=new Date(v.nextDate);if(d&lt;today)alerts.push({type:'danger',msg:`💉 ${v.name} 疫苗已逾期！（${v.nextDate}）`});else if(d&lt;=in7)alerts.push({type:'warn',msg:`💉 ${v.name} 疫苗即將到期（${v.nextDate}）`});else if(d&lt;=in30)alerts.push({type:'info',msg:`💉 ${v.name} 本月需接種（${v.nextDate}）`});}});</p>
+<p class="p3"><span class="Apple-converted-space">    </span>(S.deworming[cid()]||[]).forEach(d2=&gt;{if(d2.nextDate){const d=new Date(d2.nextDate);if(d&lt;today)alerts.push({type:'danger',msg:`🪱 ${d2.type}（${d2.med}）已逾期`});else if(d&lt;=in7)alerts.push({type:'warn',msg:`🪱 ${d2.type} 即將到期（${d2.nextDate}）`});}});</p>
+<p class="p3"><span class="Apple-converted-space">    </span>(S.health[cid()]||[]).forEach(h=&gt;{if(h.nextVisit){const d=new Date(h.nextVisit);if(d&lt;=today)alerts.push({type:'warn',msg:`🩺 ${h.reason} 回診時間已到（${h.nextVisit}）`});else if(d&lt;=in7)alerts.push({type:'info',msg:`🩺 ${h.reason} 即將回診（${h.nextVisit}）`});}});</p>
+<p class="p3"><span class="Apple-converted-space">    </span>(S.litter[cid()]||[]).forEach(l=&gt;{if(l.nextDate){const d=new Date(l.nextDate);if(d&lt;=in7)alerts.push({type:'info',msg:`📦 ${l.brand} 貓砂即將配送（${l.nextDate}）`});}});</p>
+<p class="p3"><span class="Apple-converted-space">  </span>}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>document.getElementById('remindersArea').innerHTML=alerts.length?alerts.map(a=&gt;`&lt;div class="alert alert-${a.type}"&gt;&lt;span&gt;⚠️&lt;/span&gt;${a.msg}&lt;/div&gt;`).join(''):'&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;🎉&lt;/div&gt;沒有緊急事項！&lt;/div&gt;';</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="Apple-converted-space">  </span>const evs=getAllEvents(cid()).filter(e=&gt;new Date(e.date)&gt;=today);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const nb=document.getElementById('nextEventName'),db=document.getElementById('nextEventDate'),gb=document.getElementById('nextEventGcalBtn');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(evs.length){const ev=evs[0],days=daysUntil(ev.date);nb.textContent=ev.title;db.textContent=ev.date+(days===0?' · 今天！':days===1?' · 明天！':` · 還有 ${days} 天`);gb.style.display='inline-flex';gb.onclick=()=&gt;openInGCal(ev);}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>else{nb.textContent='目前沒有即將到來的事項';db.textContent='';gb.style.display='none';}</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// GENERIC ADD HELPER</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">async function addRecord(sheetName, catKey, obj) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!cid()) return alert('請先選擇貓咪');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!SCRIPT_URL) return alert('請先設定 Google Sheets 連線！');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>ensArr(S[sheetName], catKey || cid());</p>
+<p class="p3"><span class="Apple-converted-space">  </span>S[sheetName][catKey || cid()].push(obj);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>renderPage(_page);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await appendRow(sheetName, obj);</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">async function delRecord(sheetName, id) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!cid()) return;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!SCRIPT_URL) return alert('請先設定 Google Sheets 連線！');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!confirm('確定刪除？')) return;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>// Remove from local state</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(S[sheetName][cid()]) S[sheetName][cid()] = S[sheetName][cid()].filter(r=&gt;r.id!==id);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>renderPage(_page);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>// Build full flat array for this sheet and save</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const flat = Object.values(S[sheetName]).flat();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await saveSheet(sheetName, flat);</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">async function delExpo(id) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!SCRIPT_URL) return alert('請先設定 Google Sheets 連線！');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!confirm('確定刪除？')) return;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>S.expos = S.expos.filter(e=&gt;e.id!==id);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>renderExpo();</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await saveSheet('expos', S.expos);</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// HEALTH</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">async function addHealthRecord() {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj = {id:uid(),catId:cid(),date:document.getElementById('hDate').value,reason:document.getElementById('hReason').value,diagnosis:document.getElementById('hDiagnosis').value,meds:document.getElementById('hMeds').value,notes:document.getElementById('hNotes').value,nextVisit:document.getElementById('hNextVisit').value,cost:document.getElementById('hCost').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addHealthModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>['hDate','hReason','hDiagnosis','hMeds','hNotes','hNextVisit','hCost'].forEach(id=&gt;document.getElementById(id).value='');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await addRecord('health', cid(), obj);</p>
+<p class="p3">}</p>
+<p class="p3">function renderHealth(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el=document.getElementById('healthList');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const recs=(cid()&amp;&amp;S.health[cid()]||[]).slice().sort((a,b)=&gt;b.date.localeCompare(a.date));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!recs.length){el.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;🩺&lt;/div&gt;尚無就醫紀錄&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>el.innerHTML=recs.map(r=&gt;`&lt;div class="record-item"&gt;&lt;div style="flex:1"&gt;&lt;div class="record-title"&gt;${r.reason||'未命名'}&lt;/div&gt;&lt;div style="margin:6px 0 4px"&gt;${r.diagnosis?`&lt;span class="tag tag-sky"&gt;診斷：${r.diagnosis}&lt;/span&gt;`:''}${r.meds?`&lt;span class="tag tag-mint"&gt;用藥：${r.meds}&lt;/span&gt;`:''}${r.nextVisit?`&lt;span class="tag tag-yellow"&gt;回診：${r.nextVisit}&lt;/span&gt;`:''}&lt;/div&gt;${r.notes?`&lt;div class="record-meta"&gt;${r.notes}&lt;/div&gt;`:''}${r.cost?`&lt;div class="record-meta"&gt;💰 NT$ ${parseInt(r.cost).toLocaleString()}&lt;/div&gt;`:''}&lt;/div&gt;&lt;div style="text-align:right;display:flex;flex-direction:column;gap:8px;align-items:flex-end"&gt;&lt;div class="record-date"&gt;${r.date}&lt;/div&gt;${r.nextVisit?`&lt;button class="gcal-btn" style="font-size:11px;padding:5px 10px" onclick='openInGCal({title:"${r.reason} 回診",date:"${r.nextVisit}",note:"就醫回診"})'&gt;📅 回診&lt;/button&gt;`:''}&lt;button class="icon-btn del" onclick="delRecord('health','${r.id}')"&gt;🗑&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// VACCINE</p>
+<p class="p3">async function addVaccine(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const sel=document.getElementById('vName').value;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const name=sel==='其他'?document.getElementById('vCustomName').value:sel;</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj={id:uid(),catId:cid(),name,date:document.getElementById('vDate').value,nextDate:document.getElementById('vNextDate').value,batch:document.getElementById('vBatch').value,notes:document.getElementById('vNotes').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addVaccineModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await addRecord('vaccines', cid(), obj);</p>
+<p class="p3">}</p>
+<p class="p3">function renderVaccines(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el=document.getElementById('vaccineList');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const recs=(cid()&amp;&amp;S.vaccines[cid()]||[]).slice().sort((a,b)=&gt;b.date.localeCompare(a.date));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!recs.length){el.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;💉&lt;/div&gt;尚無疫苗紀錄&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>el.innerHTML='&lt;div class="record-list"&gt;'+recs.map(v=&gt;{let badge='';if(v.nextDate){const d=daysUntil(v.nextDate);if(d&lt;0)badge='&lt;span class="tag tag-red"&gt;已逾期&lt;/span&gt;';else if(d&lt;=30)badge=`&lt;span class="tag tag-yellow"&gt;⏰ ${d}天後&lt;/span&gt;`;else badge='&lt;span class="tag tag-green"&gt;✅ 正常&lt;/span&gt;';}return`&lt;div class="record-item"&gt;&lt;div style="flex:1"&gt;&lt;div class="record-title"&gt;${v.name} ${badge}&lt;/div&gt;&lt;div class="record-meta"&gt;接種：${v.date}${v.nextDate?' · 下次：'+v.nextDate:''}&lt;/div&gt;${v.notes?`&lt;div class="record-meta"&gt;${v.notes}&lt;/div&gt;`:''}&lt;/div&gt;&lt;div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end"&gt;${v.nextDate?`&lt;button class="gcal-btn" style="font-size:11px;padding:5px 10px" onclick='openInGCal({title:"${v.name} 接種",date:"${v.nextDate}",note:"疫苗"})'&gt;📅&lt;/button&gt;`:''}&lt;button class="icon-btn del" onclick="delRecord('vaccines','${v.id}')"&gt;🗑&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`;}).join('')+'&lt;/div&gt;';</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// DEWORMING</p>
+<p class="p3">async function addDeworming(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj={id:uid(),catId:cid(),type:document.getElementById('dwType').value,med:document.getElementById('dwMed').value,date:document.getElementById('dwDate').value,nextDate:document.getElementById('dwNextDate').value,notes:document.getElementById('dwNotes').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addDewormModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>['dwMed','dwDate','dwNextDate','dwNotes'].forEach(id=&gt;document.getElementById(id).value='');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await addRecord('deworming', cid(), obj);</p>
+<p class="p3">}</p>
+<p class="p3">function renderDeworming(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el=document.getElementById('dewormList');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const recs=(cid()&amp;&amp;S.deworming[cid()]||[]).slice().sort((a,b)=&gt;b.date.localeCompare(a.date));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!recs.length){el.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;🪱&lt;/div&gt;尚無除蟲紀錄&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>el.innerHTML=recs.map(d=&gt;`&lt;div class="record-item"&gt;&lt;div style="flex:1"&gt;&lt;div class="record-title"&gt;${d.type}&lt;/div&gt;&lt;div style="margin:5px 0"&gt;&lt;span class="tag tag-lavender"&gt;${d.med||'—'}&lt;/span&gt;&lt;/div&gt;&lt;div class="record-meta"&gt;施用：${d.date}${d.nextDate?' · 下次：'+d.nextDate:''}&lt;/div&gt;${d.notes?`&lt;div class="record-meta"&gt;${d.notes}&lt;/div&gt;`:''}&lt;/div&gt;&lt;div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end"&gt;${d.nextDate?`&lt;button class="gcal-btn" style="font-size:11px;padding:5px 10px" onclick='openInGCal({title:"${d.type} 提醒",date:"${d.nextDate}",note:"除蟲"})'&gt;📅&lt;/button&gt;`:''}&lt;button class="icon-btn del" onclick="delRecord('deworming','${d.id}')"&gt;🗑&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// BODY</p>
+<p class="p3">async function addBodyRecord(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj={id:uid(),catId:cid(),date:document.getElementById('bdDate').value,weight:document.getElementById('bdWeight').value,bcs:document.getElementById('bdBCS').value,skin:document.getElementById('bdSkin').value,activity:document.getElementById('bdActivity').value,appetite:document.getElementById('bdAppetite').value,notes:document.getElementById('bdNotes').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addBodyModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await addRecord('body', cid(), obj);</p>
+<p class="p3">}</p>
+<p class="p3">function drawChart(el,recs,h){if(!recs.length){el.innerHTML='';return;}const s=recs.slice().sort((a,b)=&gt;a.date.localeCompare(b.date));const max=Math.max(...s.map(r=&gt;parseFloat(r.weight)||0)),min=Math.min(...s.map(r=&gt;parseFloat(r.weight)||0)),range=max-min||0.5;const ch=parseInt(el.style.height)||h||90;el.innerHTML=s.map(r=&gt;{const bh=Math.max(14,((parseFloat(r.weight)-min)/range*(ch-20))+14);return`&lt;div class="weight-bar" style="height:${bh}px" data-val="${r.weight}kg"&gt;&lt;/div&gt;`;}).join('');}</p>
+<p class="p3">function renderBody(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const recs=cid()&amp;&amp;S.body[cid()]||[];</p>
+<p class="p3"><span class="Apple-converted-space">  </span>drawChart(document.getElementById('fullWeightChart'),recs,110);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const tl=document.getElementById('bodyTimeline');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const sorted=recs.slice().sort((a,b)=&gt;b.date.localeCompare(a.date));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!sorted.length){tl.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;⚖️&lt;/div&gt;尚無身體狀況紀錄&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const dc=['var(--accent)','var(--mint)','var(--lavender)','var(--sky)','var(--pink)'];</p>
+<p class="p3"><span class="Apple-converted-space">  </span>tl.innerHTML=sorted.map((r,i)=&gt;`&lt;div class="tl-item"&gt;&lt;div class="tl-dot" style="background:${dc[i%dc.length]}"&gt;&lt;/div&gt;&lt;div class="tl-date"&gt;${r.date}&lt;/div&gt;&lt;div class="tl-content"&gt;&lt;div class="tl-title" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"&gt;${r.weight?`&lt;span style="color:var(--accent);font-size:18px"&gt;${r.weight} kg&lt;/span&gt;`:''} ${r.bcs?`&lt;span class="tag tag-sky"&gt;BCS ${r.bcs}&lt;/span&gt;`:''} ${r.activity?`&lt;span class="tag tag-mint"&gt;${r.activity}&lt;/span&gt;`:''} ${r.appetite?`&lt;span class="tag tag-yellow"&gt;食慾：${r.appetite}&lt;/span&gt;`:''}&lt;/div&gt;${r.skin?`&lt;div class="tl-body"&gt;毛皮：${r.skin}&lt;/div&gt;`:''}${r.notes?`&lt;div class="tl-body"&gt;${r.notes}&lt;/div&gt;`:''}&lt;button class="icon-btn del" style="margin-top:8px" onclick="delRecord('body','${r.id}')"&gt;🗑 刪除&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// FEEDER</p>
+<p class="p3">async function addFeeder(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj={id:uid(),catId:cid(),name:document.getElementById('fdName').value,brand:document.getElementById('fdBrand').value,type:document.getElementById('fdType').value,daily:document.getElementById('fdDaily').value,times:document.getElementById('fdTimes').value,schedule:document.getElementById('fdSchedule').value,remain:document.getElementById('fdRemain').value,notes:document.getElementById('fdNotes').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addFeederModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await addRecord('feeders', cid(), obj);</p>
+<p class="p3">}</p>
+<p class="p3">function renderFeeders(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el=document.getElementById('feederList');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const recs=cid()&amp;&amp;S.feeders[cid()]||[];</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!recs.length){el.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;🍽️&lt;/div&gt;尚未設定飼料機&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>el.innerHTML=recs.map(f=&gt;{const times=f.schedule?f.schedule.split(',').map(s=&gt;s.trim()):[];const pct=f.remain&amp;&amp;f.daily?Math.min(100,Math.round(parseFloat(f.remain)/(parseFloat(f.daily)*7)*100)):null;return`&lt;div class="card"&gt;&lt;div style="display:flex;justify-content:space-between;margin-bottom:14px"&gt;&lt;div&gt;&lt;div style="font-family:'Nunito',sans-serif;font-size:17px;font-weight:800"&gt;${f.name||'飼料機'}&lt;/div&gt;&lt;div style="font-size:12px;color:var(--text3)"&gt;${[f.brand,f.type].filter(Boolean).join(' · ')}&lt;/div&gt;&lt;/div&gt;&lt;button class="icon-btn del" onclick="delRecord('feeders','${f.id}')"&gt;🗑&lt;/button&gt;&lt;/div&gt;&lt;div class="grid2" style="margin-bottom:14px"&gt;&lt;div class="stat"&gt;&lt;div class="stat-val"&gt;${f.daily||'—'}&lt;span style="font-size:13px"&gt;g&lt;/span&gt;&lt;/div&gt;&lt;div class="stat-label"&gt;每日份量&lt;/div&gt;&lt;/div&gt;&lt;div class="stat"&gt;&lt;div class="stat-val"&gt;${f.times||'—'}&lt;/div&gt;&lt;div class="stat-label"&gt;次/天&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;${times.length?`&lt;div style="margin-bottom:12px"&gt;${times.map(t=&gt;`&lt;span class="tag tag-orange"&gt;⏰ ${t}&lt;/span&gt;`).join(' ')}&lt;/div&gt;`:''}${pct!==null?`&lt;div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px"&gt;剩餘：${f.remain}g（${pct}%）&lt;/div&gt;&lt;div class="progress-bar"&gt;&lt;div class="progress-fill" style="width:${pct}%;background:${pct&lt;20?'#e05a5a':pct&lt;50?'var(--yellow)':'var(--green)'}"&gt;&lt;/div&gt;&lt;/div&gt;`:''}&lt;/div&gt;`;}).join('');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// LITTER</p>
+<p class="p3">async function addLitter(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj={id:uid(),catId:cid(),brand:document.getElementById('ltBrand').value,type:document.getElementById('ltType').value,platform:document.getElementById('ltPlatform').value,cycle:document.getElementById('ltCycle').value,qty:document.getElementById('ltQty').value,price:document.getElementById('ltPrice').value,nextDate:document.getElementById('ltNextDate').value,notes:document.getElementById('ltNotes').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>closeModal('addLitterModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await addRecord('litter', cid(), obj);</p>
+<p class="p3">}</p>
+<p class="p3">function renderLitter(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el=document.getElementById('litterList');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const recs=cid()&amp;&amp;S.litter[cid()]||[];</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!recs.length){el.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;📦&lt;/div&gt;尚無訂閱紀錄&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const cl={'14':'每兩週','30':'每月','60':'每兩個月','90':'每季'};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>el.innerHTML=recs.map(l=&gt;`&lt;div class="sub-card"&gt;&lt;div class="sub-icon"&gt;📦&lt;/div&gt;&lt;div class="sub-info" style="flex:1"&gt;&lt;div class="sub-name"&gt;${l.brand||'—'} &lt;span class="tag tag-sky"&gt;${l.type}&lt;/span&gt;&lt;/div&gt;&lt;div class="sub-meta"&gt;平台：${l.platform||'—'} · ${cl[l.cycle]||l.cycle+'天'}&lt;br&gt;數量：${l.qty||'—'}${l.nextDate?'&lt;br&gt;下次：&lt;strong&gt;'+l.nextDate+'&lt;/strong&gt;':''}${l.notes?'&lt;br&gt;'+l.notes:''}&lt;/div&gt;&lt;/div&gt;&lt;div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px"&gt;&lt;div style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:800;color:var(--accent)"&gt;NT$ ${parseInt(l.price||0).toLocaleString()}&lt;/div&gt;${l.nextDate?`&lt;button class="gcal-btn" style="font-size:11px;padding:5px 10px" onclick='openInGCal({title:"📦 貓砂配送（${l.brand}）",date:"${l.nextDate}",note:"貓砂配送"})'&gt;📅&lt;/button&gt;`:''}&lt;button class="icon-btn del" onclick="delRecord('litter','${l.id}')"&gt;🗑&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// EXPO</p>
+<p class="p3">async function addExpo(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const obj={id:uid(),name:document.getElementById('exName').value,start:document.getElementById('exStart').value,end:document.getElementById('exEnd').value,location:document.getElementById('exLocation').value,ticket:document.getElementById('exTicket').value,url:document.getElementById('exUrl').value,status:document.getElementById('exStatus').value,notes:document.getElementById('exNotes').value};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>S.expos.push(obj); renderExpo(); closeModal('addExpoModal');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>await appendRow('expos', obj);</p>
+<p class="p3">}</p>
+<p class="p3">function renderExpo(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const body=document.getElementById('expoBody');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const sorted=S.expos.slice().sort((a,b)=&gt;b.start.localeCompare(a.start));</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!sorted.length){body.innerHTML='&lt;tr&gt;&lt;td colspan="6"&gt;&lt;div class="empty"&gt;尚無寵物展資料&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const sc={'計畫前往':'tag-sky','已報名':'tag-yellow','已參加':'tag-green','未參加':'tag-red'};</p>
+<p class="p3"><span class="Apple-converted-space">  </span>body.innerHTML=sorted.map(e=&gt;`&lt;tr&gt;&lt;td&gt;&lt;div style="font-weight:700"&gt;${e.name}&lt;/div&gt;${e.url?`&lt;a href="${e.url}" target="_blank" style="font-size:11px;color:var(--sky)"&gt;🔗 官網&lt;/a&gt;`:''}&lt;/td&gt;&lt;td&gt;${e.start}${e.end&amp;&amp;e.end!==e.start?'&lt;br&gt;~'+e.end:''}&lt;/td&gt;&lt;td&gt;${e.location||'—'}&lt;/td&gt;&lt;td&gt;${e.ticket==0?'免費':'NT$'+(e.ticket||'—')}&lt;/td&gt;&lt;td&gt;&lt;span class="tag ${sc[e.status]||'tag-sky'}"&gt;${e.status}&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;div style="display:flex;gap:6px"&gt;&lt;button class="gcal-btn" style="font-size:11px;padding:5px 10px" onclick='openInGCal({title:"🎪 ${e.name}",date:"${e.start}",note:"寵物展 @ ${e.location||''}"})'&gt;📅&lt;/button&gt;&lt;button class="icon-btn del" onclick="delExpo('${e.id}')"&gt;🗑&lt;/button&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;`).join('');</p>
+<p class="p3">}</p>
+<p class="p2"><br></p>
+<p class="p3">// CALENDAR</p>
+<p class="p3">function renderCalendar(){</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const evs=getAllEvents(cid());</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const el=document.getElementById('calendarEventsList');</p>
+<p class="p3"><span class="Apple-converted-space">  </span>if(!evs.length){el.innerHTML='&lt;div class="empty"&gt;&lt;div class="empty-icon"&gt;📅&lt;/div&gt;尚無重要日期&lt;/div&gt;';return;}</p>
+<p class="p3"><span class="Apple-converted-space">  </span>const today=new Date();today.setHours(0,0,0,0);</p>
+<p class="p3"><span class="Apple-converted-space">  </span>el.innerHTML='&lt;div class="record-list"&gt;'+evs.map(ev=&gt;{const d=daysUntil(ev.date);let badge=d&lt;0?'&lt;span class="tag tag-red"&gt;已過期&lt;/span&gt;':d===0?'&lt;span class="tag tag-yellow"&gt;今天&lt;/span&gt;':d&lt;=7?`&lt;span class="tag tag-yellow"&gt;⏰ ${d}天後&lt;/span&gt;`:`&lt;span class="tag tag-green"&gt;${d}天後&lt;/span&gt;`;return`&lt;div class="record-item"&gt;&lt;div style="flex:1"&gt;&lt;div class="record-title"&gt;${ev.title} ${badge}&lt;/div&gt;&lt;div class="record-meta"&gt;${ev.date}${ev.note?' · '+ev.note:''}&lt;/div&gt;&lt;/div&gt;&lt;button class="gcal-btn" onclick='openInGCal(${JSON.stringify(ev)})'&gt;📅 加入日曆&lt;/button&gt;&lt;/div&gt;`;}).join('')+'&lt;/div&gt;';</p>
+<p class="p3">}</p>
+<p class="p3">function exportICS(){const evs=getAllEvents(cid());if(!evs.length)return alert('沒有事項');let ics='BEGIN:VCALENDAR\nVERSION:2.0\n';evs.forEach(ev=&gt;{const dt=ev.date.replace(/-/g,'');const nd=new Date(ev.date);nd.setDate(nd.getDate()+1);const de=nd.toISOString().slice(0,10).replace(/-/g,'');ics+=`BEGIN:VEVENT\nSUMMARY:${ev.title}\nDTSTART;VALUE=DATE:${dt}\nDTEND;VALUE=DATE:${de}\nEND:VEVENT\n`;});ics+='END:VCALENDAR';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='喵喵管家.ics';a.click();}</p>
+<p class="p2"><br></p>
+<p class="p3">// ================================================================</p>
+<p class="p3">// INIT</p>
+<p class="p3">// ================================================================</p>
+<p class="p3">if (SCRIPT_URL) {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>fetchAll();</p>
+<p class="p3">} else {</p>
+<p class="p3"><span class="Apple-converted-space">  </span>setSyncStatus('', '尚未設定 Google Sheets 連線');</p>
+<p class="p3">}</p>
+<p class="p3">renderCatTabs();</p>
+<p class="p3">renderDashboard();</p>
+<p class="p3">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p3">&lt;/body&gt;</p>
+<p class="p3">&lt;/html&gt;</p>
+</body>
+</html>
