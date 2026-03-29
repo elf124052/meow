@@ -87,14 +87,18 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;min-height:100vh;display:fle
 .health-section.active{display:block;}
 
 /* ── BOTTOM NAV ── */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(–surface);border-top:1.5px solid var(–border);display:flex;align-items:center;justify-content:space-around;height:var(–bottomnav-h);z-index:100;box-shadow:0 -2px 12px rgba(120,80,40,0.08);}
-.nav-tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px;cursor:pointer;flex:1;border:none;background:none;transition:all 0.15s;}
-.nav-tab svg{width:24px;height:24px;stroke:var(–text3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke 0.15s;}
-.nav-tab span{font-size:10px;font-weight:700;color:var(–text3);font-family:‘Nunito’,sans-serif;transition:color 0.15s;}
-.nav-tab.active svg{stroke:var(–accent);}
-.nav-tab.active span{color:var(–accent);}
-.nav-tab:hover svg{stroke:var(–accent2);}
-.nav-tab:hover span{color:var(–accent2);}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1.5px solid var(–border);display:flex;align-items:center;justify-content:space-around;height:var(–bottomnav-h);z-index:100;box-shadow:0 -2px 12px rgba(120,80,40,0.08);}
+.nav-tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px;cursor:pointer;flex:1;border:none;background:transparent;-webkit-tap-highlight-color:transparent;}
+/* iOS Safari: must set stroke explicitly via CSS, not inherit */
+.nav-tab .nav-icon{width:26px;height:26px;display:block;}
+.nav-tab .nav-icon path,.nav-tab .nav-icon polyline,.nav-tab .nav-icon line,
+.nav-tab .nav-icon rect,.nav-tab .nav-icon circle,.nav-tab .nav-icon polygon,
+.nav-tab .nav-icon ellipse{stroke:#a8835e;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke 0.15s;}
+.nav-tab span{font-size:10px;font-weight:700;color:#a8835e;font-family:‘Nunito’,sans-serif;transition:color 0.15s;display:block;}
+.nav-tab.active .nav-icon path,.nav-tab.active .nav-icon polyline,.nav-tab.active .nav-icon line,
+.nav-tab.active .nav-icon rect,.nav-tab.active .nav-icon circle,.nav-tab.active .nav-icon polygon,
+.nav-tab.active .nav-icon ellipse{stroke:#e07a5f;}
+.nav-tab.active span{color:#e07a5f;}
 
 /* ── CARDS ── */
 .card{background:var(–surface);border:1.5px solid var(–border);border-radius:var(–r);padding:14px;margin-bottom:12px;box-shadow:var(–shadow);}
@@ -335,8 +339,8 @@ textarea{resize:vertical;min-height:68px;}
     <div class="card" style="margin-bottom:0">
       <div class="card-title">最近體重趨勢</div>
       <div class="chart-wrap">
-        <div id="dashWeightChart" class="chart-bars"></div>
-        <div id="dashWeightLabels" class="chart-labels"></div>
+        <div id="dashWeightChart" class="chart-bars" style="height:80px;display:flex;align-items:flex-end;gap:4px;"></div>
+        <div id="dashWeightLabels" class="chart-labels" style="display:flex;gap:4px;margin-top:3px;"></div>
       </div>
     </div>
   </div>
@@ -387,8 +391,8 @@ textarea{resize:vertical;min-height:68px;}
   <div class="card">
     <div class="card-title">體重趨勢</div>
     <div class="chart-wrap">
-      <div id="fullWeightChart" class="chart-bars chart-full"></div>
-      <div id="fullWeightLabels" class="chart-labels"></div>
+      <div id="fullWeightChart" class="chart-bars chart-full" style="height:100px;display:flex;align-items:flex-end;gap:4px;"></div>
+      <div id="fullWeightLabels" class="chart-labels" style="display:flex;gap:4px;margin-top:3px;"></div>
     </div>
   </div>
   <div class="timeline" id="bodyTimeline"></div>
@@ -414,9 +418,6 @@ textarea{resize:vertical;min-height:68px;}
   <button class="health-tab" id="dtab-care" onclick="switchDailyTab('care')">
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 除蟲 &amp; 護理
   </button>
-  <button class="health-tab" id="dtab-expo" onclick="switchDailyTab('expo')">
-    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 寵物展
-  </button>
 </div>
 
 <div class="health-section active" id="dsec-litter">
@@ -432,47 +433,38 @@ textarea{resize:vertical;min-height:68px;}
   </div>
   <div class="record-list" id="careList"></div>
 </div>
+```
 
-<div class="health-section" id="dsec-expo">
+  </div>
+
+  <!-- ④ SCHEDULE: expo + expense + calendar (renamed from money) -->
+
+  <div class="page" id="page-money">
+    <div class="page-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      行程 &amp; 費用
+    </div>
+
+```
+<div class="health-tabs">
+  <button class="health-tab active" id="mtab-expo" onclick="switchMoneyTab('expo')">
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 寵物展
+  </button>
+  <button class="health-tab" id="mtab-calendar" onclick="switchMoneyTab('calendar')">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 重要日期
+  </button>
+  <button class="health-tab" id="mtab-expense" onclick="switchMoneyTab('expense')">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 費用統計
+  </button>
+</div>
+
+<div class="health-section active" id="msec-expo">
   <div class="btn-row" style="margin-bottom:12px">
     <button class="btn btn-primary" onclick="openModal('addExpoModal')">+ 新增寵物展</button>
   </div>
   <div class="card" style="overflow-x:auto">
     <table class="expo-table"><thead><tr><th>展覽名稱</th><th>日期</th><th>地點</th><th>票價</th><th>狀態</th><th></th></tr></thead>
     <tbody id="expoBody"></tbody></table>
-  </div>
-</div>
-```
-
-  </div>
-
-  <!-- ④ EXPENSE + CALENDAR merged (FIX #4) -->
-
-  <div class="page" id="page-money">
-    <div class="page-title">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      費用 &amp; 行事曆
-    </div>
-
-```
-<div class="health-tabs">
-  <button class="health-tab active" id="mtab-expense" onclick="switchMoneyTab('expense')">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 費用統計
-  </button>
-  <button class="health-tab" id="mtab-calendar" onclick="switchMoneyTab('calendar')">
-    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 重要日期
-  </button>
-</div>
-
-<div class="health-section active" id="msec-expense">
-  <div class="expense-total">
-    <div style="font-size:11px;font-weight:700;color:var(--text3);margin-bottom:3px">所有時間累積</div>
-    <div class="expense-big" id="expenseTotal">NT$ 0</div>
-    <div class="expense-grid" id="expenseGrid"></div>
-  </div>
-  <div class="card">
-    <div class="card-title">費用明細</div>
-    <div class="record-list" id="expenseList"></div>
   </div>
 </div>
 
@@ -482,6 +474,18 @@ textarea{resize:vertical;min-height:68px;}
     <div id="calendarEventsList"></div>
     <hr class="sep">
     <button class="btn btn-secondary" onclick="exportICS()">下載 .ics 備份</button>
+  </div>
+</div>
+
+<div class="health-section" id="msec-expense">
+  <div class="expense-total">
+    <div style="font-size:11px;font-weight:700;color:var(--text3);margin-bottom:3px">所有時間累積</div>
+    <div class="expense-big" id="expenseTotal">NT$ 0</div>
+    <div class="expense-grid" id="expenseGrid"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">費用明細</div>
+    <div class="record-list" id="expenseList"></div>
   </div>
 </div>
 ```
@@ -536,23 +540,23 @@ textarea{resize:vertical;min-height:68px;}
 
 <nav class="bottom-nav">
   <button class="nav-tab active" id="tab-dashboard" onclick="showPage('dashboard',this)">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>首頁</span>
   </button>
   <button class="nav-tab" id="tab-health" onclick="showPage('health',this)">
-    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
     <span>健康</span>
   </button>
   <button class="nav-tab" id="tab-daily" onclick="showPage('daily',this)">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
     <span>日常</span>
   </button>
   <button class="nav-tab" id="tab-money" onclick="showPage('money',this)">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-    <span>費用</span>
+    <svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span>行程</span>
   </button>
   <button class="nav-tab" id="tab-settings" onclick="showPage('settings',this)">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <svg class="nav-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
     <span>設定</span>
   </button>
 </nav>
@@ -752,21 +756,21 @@ function switchHealthTab(tab){
 
 // ── FIX #6: daily sub-tab switching ──────────────────────────────
 function switchDailyTab(tab){
-  ['litter','care','expo'].forEach(t=>{
+  ['litter','care'].forEach(t=>{
     document.getElementById('dtab-'+t).classList.toggle('active',t===tab);
     document.getElementById('dsec-'+t).classList.toggle('active',t===tab);
   });
   if(tab==='litter') renderLitter();
   if(tab==='care') renderCare();
-  if(tab==='expo') renderExpo();
 }
 
-// ── FIX #4: money/calendar tab switching ─────────────────────────
+// ── money/schedule tab switching ─────────────────────────────────
 function switchMoneyTab(tab){
-  ['expense','calendar'].forEach(t=>{
+  ['expo','calendar','expense'].forEach(t=>{
     document.getElementById('mtab-'+t).classList.toggle('active',t===tab);
     document.getElementById('msec-'+t).classList.toggle('active',t===tab);
   });
+  if(tab==='expo') renderExpo();
   if(tab==='expense') renderExpense();
   if(tab==='calendar') renderCalendar();
 }
@@ -793,14 +797,24 @@ function previewAvatar(input){const file=input.files[0];if(!file)return;const r=
 function updateEmojiPreview(){if(_newCatPhotoData)return;document.getElementById('newCatPreview').innerHTML=document.getElementById('catEmoji').value;}
 function catAvatarHTML(cat,sz=22){if(cat.photo)return`<img src="${cat.photo}" style="width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;">`;return`<span style="font-size:${Math.round(sz*0.6)}px;line-height:1">${cat.emoji||'🐱'}</span>`;}
 
-// ── CAT TABS ─────────────────────────────────────────────────────
+// ── CAT TABS — FIX #2b: switching cat re-renders all data ────────
 function renderCatTabs(){
   const el=document.getElementById('catSwitcher');el.innerHTML='';
   S.cats.forEach(cat=>{
     const t=document.createElement('button');
     t.className='cat-chip'+(_currentCat===cat.id?' active':'');
     t.innerHTML=`<div class="cat-chip-av">${catAvatarHTML(cat,22)}</div>${cat.name}`;
-    t.onclick=()=>{_currentCat=cat.id;localStorage.setItem('meow_current_cat',cat.id);renderCatTabs();renderPage(_page);};
+    t.onclick=()=>{
+      _currentCat=cat.id;
+      localStorage.setItem('meow_current_cat',cat.id);
+      renderCatTabs();
+      // re-render all visible sections for the new cat
+      renderPage(_page);
+      // also re-render sub-tabs if on health page
+      if(_page==='health') renderHealth();
+      if(_page==='daily'){renderLitter();renderCare();renderExpo();}
+      if(_page==='money'){renderExpense();}
+    };
     el.appendChild(t);
   });
 }
@@ -864,7 +878,7 @@ function renderDashboard(){
     oa.innerHTML=`<div class="dash-overview"><div class="dash-cat-left"><div class="dash-cat-avatar">${catAvatarHTML(cat,56)}</div><div class="dash-cat-name">${cat.name}</div><div class="dash-cat-sub">${cat.breed||''}${cat.birthday?'<br>'+calcAge(cat.birthday):''}</div></div><div class="dash-stats-right"><div class="stat"><div class="stat-val">${hLen}</div><div class="stat-label">就醫紀錄</div></div><div class="stat"><div class="stat-val">${vLen}</div><div class="stat-label">疫苗接種</div></div><div class="stat"><div class="stat-val" style="font-size:${lw.length>5?'15px':'20px'}">${lw}</div><div class="stat-label">最新體重</div></div><div class="stat"><div class="stat-val" style="font-size:10px;line-height:1.4">${lastDate}</div><div class="stat-label">量體重日</div></div></div></div>`;
   }
   const bSorted=(cid()&&S.body[cid()]||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)).slice(-8);
-  drawChart('dashWeightChart','dashWeightLabels',bSorted,70);
+  drawChart('dashWeightChart','dashWeightLabels',bSorted,80);
   // Alerts
   const today=new Date();today.setHours(0,0,0,0);
   const in7=new Date(today.getTime()+7*864e5),in30=new Date(today.getTime()+30*864e5);
@@ -882,17 +896,33 @@ function renderDashboard(){
   else{nb.textContent='目前沒有即將到來的事項';db.textContent='';gb.style.display='none';}
 }
 
-// ── CHART ────────────────────────────────────────────────────────
+// ── CHART — FIX: don't read height from el.style; use passed h always ──
 function drawChart(bId,lId,recs,h){
   const bEl=document.getElementById(bId),lEl=document.getElementById(lId);
-  if(!recs||!recs.length){if(bEl)bEl.innerHTML='<div style="color:var(--text3);font-size:12px;font-weight:600;padding:10px 0">尚無體重紀錄</div>';if(lEl)lEl.innerHTML='';return;}
-  const max=Math.max(...recs.map(r=>parseFloat(r.weight)||0)),min=Math.min(...recs.map(r=>parseFloat(r.weight)||0)),range=max-min||0.5,ch=h||80;
-  if(bEl)bEl.innerHTML=recs.map(r=>{const bh=Math.max(6,((parseFloat(r.weight)-min)/range*(ch-14))+6);return`<div class="weight-bar" style="height:${bh}px" title="${fmtDate(r.date)}: ${r.weight}kg"></div>`;}).join('');
-  if(lEl)lEl.innerHTML=recs.map(r=>`<div class="chart-label">${r.weight}kg</div>`).join('');
+  if(!recs||!recs.length){
+    if(bEl)bEl.innerHTML='<div style="color:#a8835e;font-size:12px;font-weight:600;padding:10px 0;text-align:center">尚無體重紀錄</div>';
+    if(lEl)lEl.innerHTML='';
+    return;
+  }
+  const vals=recs.map(r=>parseFloat(r.weight)||0);
+  const max=Math.max(...vals),min=Math.min(...vals),range=max-min||0.5;
+  const ch=h||80; // always use the passed height; never read from DOM style
+  if(bEl)bEl.innerHTML=recs.map(r=>{
+    const bh=Math.max(8,((parseFloat(r.weight)-min)/range*(ch-16))+8);
+    return`<div class="weight-bar" style="height:${bh}px;flex:1;border-radius:4px 4px 0 0;min-height:8px;cursor:pointer;background:linear-gradient(to top,#e07a5f,#f2c4aa);display:block" title="${fmtDate(r.date)}: ${r.weight}kg"></div>`;
+  }).join('');
+  if(lEl)lEl.innerHTML=recs.map(r=>`<div class="chart-label" style="flex:1;text-align:center;font-size:9px;color:#a8835e;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.weight}kg</div>`).join('');
 }
 
-// ── HEALTH ───────────────────────────────────────────────────────
-function renderHealth(){renderVisits();}
+// ── HEALTH ── FIX #2: render whichever tab is active ─────────────
+function renderHealth(){
+  // find which tab is active and render that section
+  const activeTab=document.querySelector('.health-tabs .health-tab.active');
+  const activeId=activeTab?activeTab.id:'htab-visit';
+  if(activeId==='htab-visit') renderVisits();
+  else if(activeId==='htab-vaccine') renderVaccines();
+  else if(activeId==='htab-weight') renderBody();
+}
 async function addHealthRecord(){
   if(!cid())return alert('請先選擇貓咪');if(!SCRIPT_URL)return alert('請先設定連線！');
   ensArr(S.health,cid());
@@ -939,7 +969,7 @@ async function addBodyRecord(){
 }
 function renderBody(){
   const recs=cid()&&S.body[cid()]||[];
-  drawChart('fullWeightChart','fullWeightLabels',recs.slice().sort((a,b)=>a.date.localeCompare(b.date)),90);
+  drawChart('fullWeightChart','fullWeightLabels',recs.slice().sort((a,b)=>a.date.localeCompare(b.date)),100);
   const tl=document.getElementById('bodyTimeline');
   const desc=recs.slice().sort((a,b)=>b.date.localeCompare(a.date));
   if(!desc.length){tl.innerHTML='<div class="empty"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>尚無紀錄</div>';return;}
@@ -992,8 +1022,8 @@ function renderExpo(){
 }
 function delExpo(id){if(!confirm('確定刪除？'))return;S.expos=S.expos.filter(e=>e.id!==id);renderExpo();saveSheet('expos',S.expos);}
 
-// ── MONEY PAGE (expense + calendar) ──────────────────────────────
-function renderMoney(){renderExpense();}
+// ── MONEY PAGE (expo + calendar + expense) ────────────────────────
+function renderMoney(){renderExpo();}
 function renderExpense(){
   if(!cid()){document.getElementById('expenseTotal').textContent='NT$ 0';document.getElementById('expenseGrid').innerHTML='';document.getElementById('expenseList').innerHTML='<div class="empty">請先選擇貓咪</div>';return;}
   const hR=S.health[cid()]||[],vR=S.vaccines[cid()]||[],cR=S.care[cid()]||[],lR=S.litter[cid()]||[];
